@@ -11,7 +11,7 @@ class Validator {
   getSudokuNumberArray(sudoku) {
     const sudokuNumberArray = sudoku
       .replaceAll(/[-+|]/g, '') // Replace all '-', '+', '|' to ''.
-      .replaceAll(/(\n\n|\n)/g, ' ') // Replace all '\n' or '\n\n' to ' '.
+      .replaceAll(/(\n\n|\n)/g, ' ') // Replace all '\n\n' or '\n' to ' '.
       .trim()
       .split(' ')
       .map(Number); // Converts each array element to number.
@@ -26,7 +26,7 @@ class Validator {
     let hasDuplicates = false;
 
     numberArray.forEach(array => {
-      filteredArray = array.filter(number => number !== 0); // Filter out zeros.
+      filteredArray = array.filter((number) => number !== 0); // Filter out zeros.
       numberSet = new Set(filteredArray); // Set of unique numbers.
 
       if (filteredArray.length !== numberSet.size) { // Sets hasDuplicates to true if array contained duplicate numbers.
@@ -41,7 +41,7 @@ class Validator {
   // Check for zeros in sudoku.
   checkZeros(sudokuNumberArray) {
     if (sudokuNumberArray.includes(0)) {
-      return true
+      return true;
     }
   }
 
@@ -79,8 +79,8 @@ class Validator {
     const sudokuColumns = [];
     let col = [];
 
-    for (let i = 0; i < 9; i++) { // 9 for numbers in column.
-      sudokuRows.forEach(row => col.push(row[i]))
+    for (let i = 0; i < 9; i++) { // 9 for numbers in row.
+      sudokuRows.forEach((row) => col.push(row[i]))
       sudokuColumns.push(col);
       col = [];
     }
